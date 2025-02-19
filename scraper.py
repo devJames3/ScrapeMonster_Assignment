@@ -1,6 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from bs4 import BeautifulSoup
 import time
+import re
+
 
 def setup_driver():
     """Initialize and return a Selenium WebDriver instance."""
@@ -137,6 +140,102 @@ def extract_product_links(subcategory_url):
     return product_links
 
 
+def extract_quantity(product_name):
+    """
+    Extracts the quantity from a product name.
+    Supports kg, g, L, ml, with or without spaces.
+    """
+    # Updated regex to allow optional space between number and unit
+    quantity_pattern = r"(\d+\.?\d*)\s*(kg|g|ltr|ml|Kg|G|Ltr|Ml|KG|LTR|ML)?"
+
+    # Search for quantity in the product name
+    match = re.search(quantity_pattern, product_name, re.IGNORECASE)
+
+    if match and match.group(2):  # Ensure a unit was found
+        return f"{match.group(1)}{match.group(2).lower()}"  # Standardize unit to lowercase
+    
+    return "N/A"  # Return "N/A" if no quantity is found
+
+def is_valid_ean_upc(sku):
+    """Validate if the SKU is a proper EAN/UPC barcode."""
+    if not sku.isdigit():
+        return False  # Must be numeric
+
+    length = len(sku)
+    if length not in [8, 12, 13, 14]:
+        return False  # Must be EAN-8, UPC-12, EAN-13, or EAN-14
+
+    return validate_ean_upc_checksum(sku)  # Checksum validation
+
+
+def validate_ean_upc_checksum(barcode):
+    """Validate EAN/UPC checksum using the official algorithm."""
+    digits = [int(d) for d in barcode]
+    length = len(digits)
+
+    # Compute the checksum
+    if length in [8, 12, 13, 14]:
+        check_digit = digits[-1]  # Last digit is the check digit
+        odd_sum = sum(digits[-2::-2])  # Sum of digits at odd positions (from right, excluding last)
+        even_sum = sum(digits[-3::-2])  # Sum of digits at even positions (from right)
+
+        if length in [8, 12, 14]:  # UPC, EAN-8, or EAN-14
+            total = (odd_sum * 3) + even_sum
+        else:  # EAN-13
+            total = (even_sum * 3) + odd_sum
+
+        calculated_check_digit = (10 - (total % 10)) % 10
+
+        return check_digit == calculated_check_digit  # Must match the last digit
+
+    return False  # Invalid length
+
+
+
+def extract_product_details(product_url):
+    """Extract detailed product information from its page."""
+    driver = setup_driver()
+    product_data = {}
+
+    try:
+        driver.get(product_url)
+        time.sleep(5)  # Allow JavaScript to render content
+        
+        # Use BeautifulSoup to parse the page source
+        soup = BeautifulSoup(driver.page_source, "lxml")
+
+        # Find product details container
+        product_container = soup.find("div", class_="product-Details-page-root")
+        
+        if product_container:
+            product_name = product_container.get("data-product-name", "N/A")
+            product_data["productName"] = product_name
+
+            # Extract all images
+            img_container = product_container.find("div", class_="product-Details-images")
+            img_tags = img_container.find_all("img")
+            product_data["productImages"] = list(set([img["src"] for img in img_tags if "src" in img.attrs] if img_tags else []))
+
+            product_data["quantity"] = extract_quantity(product_name)
+
+            product_data["price"] = product_container.get("data-product-price-new", "N/A")
+            product_data["sku"] = product_container.get("data-product-id", "N/A")
+            
+
+            # Extract promotions (if available)
+            promotion = product_container.find("div", class_="promotion-text")
+            product_data["promotion"] = promotion.text.strip() if promotion else "None"
+        
+        else:
+            print("⚠️ Product details not found!")
+
+    except Exception as e:
+        print(f"❌ Error extracting product details: {e}")
+
+    finally:
+        driver.quit()
+
+    return product_data
 
 # if __name__ == "__main__":
 #     categories = extract_categories()
@@ -147,7 +246,22 @@ def extract_product_links(subcategory_url):
 #     subcategories = extract_subcategories(test_category_url)
 #     print("\n✅ Final List of Subcategories with URLs:", subcategories)
 
+# if __name__ == "__main__":
+#     test_subcategory_url = "https://www.tops.co.th/en/fruit-and-vegetables/grapes-cherries-berries"  # Replace with an actual subcategory URL
+#     product_links = extract_product_links(test_subcategory_url)
+#     print("\n✅ Final List of Product URLs:", product_links)
+
 if __name__ == "__main__":
-    test_subcategory_url = "https://www.tops.co.th/en/fruit-and-vegetables/grapes-cherries-berries"  # Replace with an actual subcategory URL
-    product_links = extract_product_links(test_subcategory_url)
-    print("\n✅ Final List of Product URLs:", product_links)
+    print(is_valid_ean_upc("0218720000006"))
+    # test_subcategory_url = "https://www.tops.co.th/en/fruit-and-vegetables/grapes-cherries-berries"
+    
+    # # Step 1: Extract product links from subcategory
+    # product_links = extract_product_links(test_subcategory_url)
+    
+    # # Step 2: Extract full details from each product page
+    # all_product_data = []
+    # for link in product_links[:5]:  # Limit to first 5 products for testing
+    #     product_details = extract_product_details(link)
+    #     all_product_data.append(product_details)
+
+    # print("\n✅ Extracted Product Details:", all_product_data)
