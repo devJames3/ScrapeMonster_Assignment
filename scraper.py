@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
+from stdnum import ean
 import time
 import re
 
@@ -158,38 +159,12 @@ def extract_quantity(product_name):
 
 def is_valid_ean_upc(sku):
     """Validate if the SKU is a proper EAN/UPC barcode."""
+    sku = sku.strip()  # Remove any extra spaces
     if not sku.isdigit():
-        return False  # Must be numeric
-
-    length = len(sku)
-    if length not in [8, 12, 13, 14]:
-        return False  # Must be EAN-8, UPC-12, EAN-13, or EAN-14
-
-    return validate_ean_upc_checksum(sku)  # Checksum validation
-
-
-def validate_ean_upc_checksum(barcode):
-    """Validate EAN/UPC checksum using the official algorithm."""
-    digits = [int(d) for d in barcode]
-    length = len(digits)
-
-    # Compute the checksum
-    if length in [8, 12, 13, 14]:
-        check_digit = digits[-1]  # Last digit is the check digit
-        odd_sum = sum(digits[-2::-2])  # Sum of digits at odd positions (from right, excluding last)
-        even_sum = sum(digits[-3::-2])  # Sum of digits at even positions (from right)
-
-        if length in [8, 12, 14]:  # UPC, EAN-8, or EAN-14
-            total = (odd_sum * 3) + even_sum
-        else:  # EAN-13
-            total = (even_sum * 3) + odd_sum
-
-        calculated_check_digit = (10 - (total % 10)) % 10
-
-        return check_digit == calculated_check_digit  # Must match the last digit
-
-    return False  # Invalid length
-
+        return False  # Must contain only digits
+    
+    # Validate using the library
+    return ean.is_valid(sku)
 
 
 def extract_product_details(product_url):
@@ -252,7 +227,7 @@ def extract_product_details(product_url):
 #     print("\n✅ Final List of Product URLs:", product_links)
 
 if __name__ == "__main__":
-    print(is_valid_ean_upc("0218720000006"))
+    print(is_valid_ean_upc("0218852000004"))
     # test_subcategory_url = "https://www.tops.co.th/en/fruit-and-vegetables/grapes-cherries-berries"
     
     # # Step 1: Extract product links from subcategory
