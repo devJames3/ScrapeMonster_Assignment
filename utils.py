@@ -49,3 +49,20 @@ def extract_paragraphs_with_newlines(div):
         extracted_text.append(text)
     
     return "\n".join(extracted_text)  # Separate paragraphs with double newlines
+
+def remove_duplicates(data):
+    """Deduplicate products (based on name + SKU)"""
+    
+    for category, products in data.items():
+        seen = set()
+        unique_products = []
+        
+        for product in products:
+            identifier = (product['productName'], product['barCodeNumber'])
+            if identifier not in seen:
+                seen.add(identifier)
+                unique_products.append(product)
+        
+        data[category] = unique_products  # Replace with unique list
+    return data
+

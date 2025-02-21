@@ -1,7 +1,7 @@
 import time
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
-from driver import setup_driver
+from driver import setup_driver, safe_get
 from utils import scroll_to_load_all_products, extract_paragraphs_with_newlines, extract_quantity, is_valid_ean_upc
 
 def extract_product_links(subcategories, limit=None):
@@ -11,11 +11,14 @@ def extract_product_links(subcategories, limit=None):
     
     try:
         for category, subcategory_list in subcategories.items():
+            products[category] = []
             for subcategory_url in subcategory_list:
                 try:
-                    driver.get(subcategory_url)
-                    time.sleep(5)  # Allow JavaScript to render content
-                    product_links = []
+                    if not safe_get(driver, subcategory_url, "product-item-inner-wrap"):
+                        return {}
+                    # driver.get(subcategory_url)
+                    # time.sleep(5)  # Allow JavaScript to render content
+                    # product_links = []
             
                     # Scroll until all products are loaded
                     scroll_to_load_all_products(driver)
@@ -30,14 +33,13 @@ def extract_product_links(subcategories, limit=None):
                             try:
                                 # product_anchor = product.find_element(By.TAG_NAME, "a")
                                 product_url = product.get_attribute("href")
-                                product_links.append(product_url)
+                                products[category].append(product_url)
                             except Exception as e:
                                 print("⚠️ Error extracting product link:", e)
                     else:
                         print("⚠️ No products found on the page. JavaScript may not have fully executed.")
                 except Exception as e:
                     print(f"❌ Error loading subcategory page: {e}")
-            products[category] = product_links
 
     except Exception as e:
         print(f"❌ An Error Occurred: {e}")
@@ -60,8 +62,10 @@ def extract_product_details(products):
             for product_url in product_list:
                
                 try:
-                    driver.get(product_url)
-                    time.sleep(5)  # Allow JavaScript to render content
+                    if not safe_get(driver, product_url):
+                        return {}
+                    # driver.get(product_url)
+                    # time.sleep(5)  # Allow JavaScript to render content
                     product_details = {}
                     
                     # Use BeautifulSoup to parse the page source
@@ -117,7 +121,7 @@ def extract_product_details(products):
                         product_details["productDetails"] = product_description 
 
                         product_details["price"] = {
-                            "value": product_container.get("data-product-price-new", "N/A"),
+                            "value": float(product_container.get("data-product-price-new", "N/A")),
                             "currency": "THB" #Assuming it is a Thailand retailer
                         }
 

@@ -1,6 +1,6 @@
 import time
 from selenium.webdriver.common.by import By
-from driver import setup_driver
+from driver import setup_driver, safe_get
 
 
 def extract_categories(url, limit=None):
@@ -9,10 +9,12 @@ def extract_categories(url, limit=None):
 
     driver = setup_driver()
     
-    try:
-        driver.get(url)
-        time.sleep(5)  # Allow JavaScript to render content
-
+    try: 
+        if not safe_get(driver, url, "sidebar-item"):
+            return {}
+        # driver.get(url)
+        # time.sleep(5)  # Allow JavaScript to render content
+        
         # Find categories
         categories = driver.find_elements(By.CLASS_NAME, "sidebar-item")
         cat_len = len(categories)
@@ -37,11 +39,11 @@ def extract_categories(url, limit=None):
             return extracted_categories 
         else:
             print("⚠️ Homepage loaded but no categories found. JavaScript may not have fully executed.")
-            return []
+            return {}
 
     except Exception as e:
         print(f"❌ Error loading homepage: {e}")
-        return []
+        return {}
     
     finally:
         driver.quit()
@@ -55,11 +57,13 @@ def extract_subcategories(category_url, limit=None):
     subcategories = []
     
     try:
-        driver.get(category_url)
-        time.sleep(5)  # Allow JavaScript to render content
+        if not safe_get(driver, category_url, "plp-carousel__link"):
+            return []
+        # driver.get(category_url)
+        # time.sleep(5)  # Allow JavaScript to render content
         
         # Find "View All" links in subcategories
-        subcategory_links = driver.find_elements(By.XPATH, "//a[@data-testid='lnk-viewProductListing-viewAllItems']")
+        subcategory_links = driver.find_elements(By.CLASS_NAME, "plp-carousel__link")
         sub_len = len(subcategory_links)
         local_limit = min(limit, sub_len) if limit else sub_len # Ensure limit is not more than the sub-categories
         if subcategory_links:
