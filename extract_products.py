@@ -1,8 +1,7 @@
-import time
-from selenium.webdriver.common.by import By
-from bs4 import BeautifulSoup
-from driver import setup_driver, safe_get
 from utils import scroll_to_load_all_products, extract_paragraphs_with_newlines, extract_quantity, is_valid_ean_upc
+from selenium.webdriver.common.by import By
+from driver import setup_driver, safe_get
+from bs4 import BeautifulSoup
 
 def extract_product_links(subcategories, limit=None):
     """Extract product links from a 'View All' page."""
@@ -14,17 +13,21 @@ def extract_product_links(subcategories, limit=None):
             products[category] = []
             for subcategory_url in subcategory_list:
                 try:
+                    # Retry Logic
                     if not safe_get(driver, subcategory_url, "product-item-inner-wrap"):
-                        return {}
+                        pass 
                     # driver.get(subcategory_url)
                     # time.sleep(5)  # Allow JavaScript to render content
                     # product_links = []
             
                     # Scroll until all products are loaded
                     scroll_to_load_all_products(driver)
-            
+
+                    # Get page source after JavaScript execution
+                    soup = BeautifulSoup(driver.page_source, "lxml")
+
                     # Find all product cards
-                    product_elements = driver.find_elements(By.CLASS_NAME, "product-item-inner-wrap") 
+                    product_elements = soup.find_all("a", class_="product-item-inner-wrap") 
                     product_len = len(product_elements)
                     local_limit = min(limit, product_len) if limit else product_len # Ensure limit is not more than the products
                     if product_elements:
@@ -32,7 +35,7 @@ def extract_product_links(subcategories, limit=None):
                         for product in product_elements[:local_limit] if limit else product_elements:
                             try:
                                 # product_anchor = product.find_element(By.TAG_NAME, "a")
-                                product_url = product.get_attribute("href")
+                                product_url = product["href"]
                                 products[category].append(product_url)
                             except Exception as e:
                                 print("⚠️ Error extracting product link:", e)
@@ -62,8 +65,9 @@ def extract_product_details(products):
             for product_url in product_list:
                
                 try:
+                    # Retry Logic
                     if not safe_get(driver, product_url):
-                        return {}
+                        pass
                     # driver.get(product_url)
                     # time.sleep(5)  # Allow JavaScript to render content
                     product_details = {}
@@ -116,12 +120,13 @@ def extract_product_details(products):
 
                         product_details["quantity"] = extract_quantity(product_name)
 
-                        product_details["barCodeNumber"] = product_sku if is_valid_ean_upc(product_sku) else "N/A"
+                        product_details["barCodeNumber"] = ( product_sku if product_sku and is_valid_ean_upc(product_sku) else "N/A" )
 
                         product_details["productDetails"] = product_description 
 
-                        product_details["price"] = {
-                            "value": float(product_container.get("data-product-price-new", "N/A")),
+                        product_price = product_container.get("data-product-price-new")
+                        product_details["price"] = {                         
+                            "value": float(product_price) if product_price else None,
                             "currency": "THB" #Assuming it is a Thailand retailer
                         }
 

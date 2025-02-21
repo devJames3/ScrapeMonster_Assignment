@@ -16,7 +16,7 @@ def setup_driver():
     return driver
 
 
-def safe_get(driver, url, classname=None, max_retries=3, timeout=30):
+def safe_get(driver, url, classname=None, max_retries=3, timeout=10):
     """Attempts to load a URL with retries and explicit waiting."""
     for attempt in range(max_retries):
         try:
@@ -29,7 +29,7 @@ def safe_get(driver, url, classname=None, max_retries=3, timeout=30):
             return True  # Page loaded successfully
         except Exception as e:
             print(f"⚠️ Attempt {attempt + 1} failed for {url}")
-            time.sleep(5)  # Wait before retrying
+            time.sleep(2)  # Wait before retrying
     
     print(f"❌ Failed to load after {max_retries} attempts: {url}")
     return False  # Page failed to load
