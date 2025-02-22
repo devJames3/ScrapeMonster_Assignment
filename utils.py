@@ -1,6 +1,5 @@
 import re
 import time
-from bs4 import BeautifulSoup
 from stdnum import ean
 
 def scroll_to_load_all_products(driver):

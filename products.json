@@ -1,85 +1,47 @@
 {
-    "OTOP": [
-        {
-            "productName": "(OTOP) Doikham Savoury Strawberry 30g.",
-            "productImages": [
-                "https://assets.tops.co.th/DOIKHAM-DoikhamSavouryStrawberry30g-8850773551115-1?$JPEG$",
-                "https://assets.tops.co.th/DOIKHAM-DoikhamSavouryStrawberry30g-8850773551115-2?$JPEG$"
-            ],
-            "quantity": "30g",
-            "barCodeNumber": "8850773551115",
-            "productDetails": "Properties:\nThe product received may be subject to package modification and quantity from the manufacturer.\nWe reserve the right to make any changes without prior notice.\n*The images used are for advertising purposes only.\n\nIngredients:\nN/A\n\nUsage:\nN/A\n\nDescription:\nN/A",
-            "price": {
-                "value": 30.0,
-                "currency": "THB"
-            },
-            "label": "OTOP Product"
-        },
-        {
-            "productName": "(OTOP) Doikham Dried Mango 140g.",
-            "productImages": [
-                "https://assets.tops.co.th/DOIKHAM-DoikhamDriedMango140g-8850773550262-3?$JPEG$",
-                "https://assets.tops.co.th/DOIKHAM-DoikhamDriedMango140g-8850773550262-1?$JPEG$",
-                "https://assets.tops.co.th/DOIKHAM-DoikhamDriedMango140g-8850773550262-2?$JPEG$",
-                "https://assets.tops.co.th/DOIKHAM-DoikhamDriedMango140g-8850773550262-4?$JPEG$"
-            ],
-            "quantity": "140g",
-            "barCodeNumber": "8850773550262",
-            "productDetails": "Properties:\nThe product received may be subject to package modification and quantity from the manufacturer.\nWe reserve the right to make any changes without prior notice.\n*The images used are for advertising purposes only.\n\nIngredients:\nN/A\n\nUsage:\nN/A\n\nDescription:\nN/A",
-            "price": {
-                "value": 80.0,
-                "currency": "THB"
-            },
-            "label": "OTOP Product"
-        }
-    ],
     "Only At Tops": [
         {
-            "productName": "My Choice Golden Banana Pack",
+            "productName": "GI My Choice Ban Phaeo Young Coconut",
             "productImages": [
-                "https://assets.tops.co.th/MYCHOICE-MyChoiceGoldenBananaPack-8853474047505-1"
+                "https://assets.tops.co.th/MYCHOICE-GIMyChoiceBanPhaeoYoungCoconut-0000038412066-1",
+                "https://assets.tops.co.th/MYCHOICE-GIMyChoiceBanPhaeoYoungCoconut-0000038412066-2?$JPEG$",
+                "https://assets.tops.co.th/MYCHOICE-GIMyChoiceBanPhaeoYoungCoconut-0000038412066-3?$JPEG$",
+                "https://assets.tops.co.th/MYCHOICE-GIMyChoiceBanPhaeoYoungCoconut-0000038412066-1?$JPEG$"
             ],
             "quantity": "N/A",
-            "barCodeNumber": "8853474047505",
-            "productDetails": "Properties:\nThe product received may be subject to package modification and quantity from the manufacturer.\nWe reserve the right to make any changes without prior notice.\n*The images used are for advertising purposes only.\n\nIngredients:\nN/A\n\nUsage:\nBring the whole banana to soak in warm water at a temperature of 50 degrees Celsius for 10 minutes. Keep the bananas in a place with a temperature of 25 degrees Celsius. This method can be stored for up to 8-10 days.\nTear off all the bananas from the pole and wrap the banana with paper or plastic film, preservation or plastic bag. Wrapped one by one separately and then refrigerated in a vegetable freezer. This method can be stored for up to 14 days or more.\n\nDescription:\nN/A",
+            "barCodeNumber": "0000038412066",
+            "productDetails": "Properties:\nFreshness Garantee 100%\n\nThe product received may be subject to package modification and quantity from the manufacturer.\nWe reserve the right to make any changes without prior notice.\n*The images used are for advertising purposes only.\n\nIngredients:\nN/A\n\nUsage:\nN/A\n\nDescription:\nhttps://www.youtube.com/embed/tQn7YDDmJe8",
             "price": {
-                "value": 39.0,
+                "value": 69.0,
                 "currency": "THB"
             },
-            "label": "Best Seller"
+            "label": "N/A"
         },
         {
-            "productName": "My Chioce Thai Avocado Pack 1 kg per pack (3-5 pcs.)",
+            "productName": "Tops Hygienic Sliced Pork Collar 200g.",
             "productImages": [
-                "https://assets.tops.co.th/MYCHOICE-MyChioceThaiAvocadoPack1000g-0000024967372-6?$JPEG$",
-                "https://assets.tops.co.th/MYCHOICE-MyChioceThaiAvocadoPack1000g-0000024967372-7?$JPEG$",
-                "https://assets.tops.co.th/MYCHOICE-MyChioceThaiAvocadoPack1000g-0000024967372-1?$JPEG$",
-                "https://assets.tops.co.th/MYCHOICE-MyChioceThaiAvocadoPack1000g-0000024967372-4?$JPEG$",
-                "https://assets.tops.co.th/MYCHOICE-MyChioceThaiAvocadoPack1000g-0000024967372-2?$JPEG$",
-                "https://assets.tops.co.th/MYCHOICE-MyChioceThaiAvocadoPack1000g-0000024967372-8?$JPEG$",
-                "https://assets.tops.co.th/MYCHOICE-MyChioceThaiAvocadoPack1000g-0000024967372-9?$JPEG$",
-                "https://assets.tops.co.th/MYCHOICE-MyChioceThaiAvocadoPack1000g-0000024967372-5?$JPEG$",
-                "https://assets.tops.co.th/MYCHOICE-MyChioceThaiAvocadoPack1000g-0000024967372-3?$JPEG$"
+                "https://assets.tops.co.th/TOPS-TopsHygienicSlicedPorkCollar200g-8853474030620-1?$JPEG$",
+                "https://assets.tops.co.th/TOPS-TopsHygienicSlicedPorkCollar200g-8853474030620-2?$JPEG$"
             ],
-            "quantity": "1kg",
-            "barCodeNumber": "0000024967372",
-            "productDetails": "Properties:\nFreshness Garantee 100%\n\nThe product received may be subject to package modification and quantity from the manufacturer.\nWe reserve the right to make any changes without prior notice.\n*The images used are for advertising purposes only.\n\nIngredients:\nN/A\n\nUsage:\nN/A\n\nDescription:\nhttps://assets.tops.co.th/0000024967372_review",
+            "quantity": "200g",
+            "barCodeNumber": "8853474030620",
+            "productDetails": "Properties:\nFreshness Garantee 100%\n\nThe product received may be subject to package modification and quantity from the manufacturer.\nWe reserve the right to make any changes without prior notice.\n*The images used are for advertising purposes only.\n\nIngredients:\nPork neck.\n\nUsage:\nSuitable for cooking.\n\nDescription:\nN/A",
             "price": {
-                "value": 99.0,
+                "value": 79.0,
                 "currency": "THB"
             },
-            "label": "Best Seller"
+            "label": "N/A"
         },
         {
             "productName": "My Choice Soya Duck with Giblets and Sweet Chili Dipping Sauce",
             "productImages": [
-                "https://assets.tops.co.th/MYCHOICE-MyChoiceSoyaDuckwithGibletsandSweetChiliDippingSauce-8853474043835-7?$JPEG$",
-                "https://assets.tops.co.th/MYCHOICE-MyChoiceSoyaDuckwithGibletsandSweetChiliDippingSauce-8853474043835-1?$JPEG$",
                 "https://assets.tops.co.th/MYCHOICE-MyChoiceSoyaDuckwithGibletsandSweetChiliDippingSauce-8853474043835-6?$JPEG$",
-                "https://assets.tops.co.th/MYCHOICE-MyChoiceSoyaDuckwithGibletsandSweetChiliDippingSauce-8853474043835-2?$JPEG$",
-                "https://assets.tops.co.th/MYCHOICE-MyChoiceSoyaDuckwithGibletsandSweetChiliDippingSauce-8853474043835-5?$JPEG$",
                 "https://assets.tops.co.th/MYCHOICE-MyChoiceSoyaDuckwithGibletsandSweetChiliDippingSauce-8853474043835-3?$JPEG$",
-                "https://assets.tops.co.th/MYCHOICE-MyChoiceSoyaDuckwithGibletsandSweetChiliDippingSauce-8853474043835-4?$JPEG$"
+                "https://assets.tops.co.th/MYCHOICE-MyChoiceSoyaDuckwithGibletsandSweetChiliDippingSauce-8853474043835-2?$JPEG$",
+                "https://assets.tops.co.th/MYCHOICE-MyChoiceSoyaDuckwithGibletsandSweetChiliDippingSauce-8853474043835-1?$JPEG$",
+                "https://assets.tops.co.th/MYCHOICE-MyChoiceSoyaDuckwithGibletsandSweetChiliDippingSauce-8853474043835-7?$JPEG$",
+                "https://assets.tops.co.th/MYCHOICE-MyChoiceSoyaDuckwithGibletsandSweetChiliDippingSauce-8853474043835-4?$JPEG$",
+                "https://assets.tops.co.th/MYCHOICE-MyChoiceSoyaDuckwithGibletsandSweetChiliDippingSauce-8853474043835-5?$JPEG$"
             ],
             "quantity": "N/A",
             "barCodeNumber": "8853474043835",
@@ -91,19 +53,56 @@
             "label": "N/A"
         },
         {
-            "productName": "James the Butcher Hygienic Ground Pork 200g.",
+            "productName": "My Choice Chinese Fuji Apple",
             "productImages": [
-                "https://assets.tops.co.th/TOPS-TopsHygienicGroundPork200g-8853474030491-1?$JPEG$",
-                "https://assets.tops.co.th/TOPS-TopsHygienicGroundPork200g-8853474030491-2?$JPEG$"
+                "https://assets.tops.co.th/MYCHOICE-MyChoiceChineseFujiApple-0218705000007-1",
+                "https://assets.tops.co.th/MYCHOICE-MyChoiceChineseFujiApple-0218705000007-4?$JPEG$",
+                "https://assets.tops.co.th/MYCHOICE-MyChoiceChineseFujiApple-0218705000007-1?$JPEG$",
+                "https://assets.tops.co.th/MYCHOICE-MyChoiceChineseFujiApple-0218705000007-3?$JPEG$",
+                "https://assets.tops.co.th/MYCHOICE-MyChoiceChineseFujiApple-0218705000007-2?$JPEG$"
             ],
-            "quantity": "200g",
-            "barCodeNumber": "8853474030491",
-            "productDetails": "Properties:\nFreshness Garantee 100%\n\nThe product received may be subject to package modification and quantity from the manufacturer.\nWe reserve the right to make any changes without prior notice.\n*The images used are for advertising purposes only.\n\nIngredients:\nPork Chops.\n\nUsage:\nSuitable for cooking.\n\nDescription:\nN/A",
+            "quantity": "N/A",
+            "barCodeNumber": "0218705000007",
+            "productDetails": "Properties:\nThe product received may be subject to package modification and quantity from the manufacturer.\nWe reserve the right to make any changes without prior notice.\n*The images used are for advertising purposes only.\n\nIngredients:\nFuji apple.\n\nUsage:\nShould be washed thoroughly and eat immediately In order to receive the highest nutrient value But if kept, it should not be washed And put in a closed container before importing the refrigerator.\n\nDescription:\nhttps://assets.tops.co.th/AppleTentcard-EN",
             "price": {
-                "value": 60.0,
+                "value": 39.0,
                 "currency": "THB"
             },
-            "label": "N/A"
+            "label": "Best Seller"
+        }
+    ],
+    "OTOP": [
+        {
+            "productName": "(OTOP) Doikham Dried Mango 140g.",
+            "productImages": [
+                "https://assets.tops.co.th/DOIKHAM-DoikhamDriedMango140g-8850773550262-4?$JPEG$",
+                "https://assets.tops.co.th/DOIKHAM-DoikhamDriedMango140g-8850773550262-3?$JPEG$",
+                "https://assets.tops.co.th/DOIKHAM-DoikhamDriedMango140g-8850773550262-2?$JPEG$",
+                "https://assets.tops.co.th/DOIKHAM-DoikhamDriedMango140g-8850773550262-1?$JPEG$"
+            ],
+            "quantity": "140g",
+            "barCodeNumber": "8850773550262",
+            "productDetails": "Properties:\nThe product received may be subject to package modification and quantity from the manufacturer.\nWe reserve the right to make any changes without prior notice.\n*The images used are for advertising purposes only.\n\nIngredients:\nN/A\n\nUsage:\nN/A\n\nDescription:\nN/A",
+            "price": {
+                "value": 80.0,
+                "currency": "THB"
+            },
+            "label": "OTOP Product"
+        },
+        {
+            "productName": "(OTOP) Doikham Savoury Strawberry 30g.",
+            "productImages": [
+                "https://assets.tops.co.th/DOIKHAM-DoikhamSavouryStrawberry30g-8850773551115-2?$JPEG$",
+                "https://assets.tops.co.th/DOIKHAM-DoikhamSavouryStrawberry30g-8850773551115-1?$JPEG$"
+            ],
+            "quantity": "30g",
+            "barCodeNumber": "8850773551115",
+            "productDetails": "Properties:\nThe product received may be subject to package modification and quantity from the manufacturer.\nWe reserve the right to make any changes without prior notice.\n*The images used are for advertising purposes only.\n\nIngredients:\nN/A\n\nUsage:\nN/A\n\nDescription:\nN/A",
+            "price": {
+                "value": 30.0,
+                "currency": "THB"
+            },
+            "label": "OTOP Product"
         }
     ]
 }

@@ -50,6 +50,8 @@ _(Make sure `requirements.txt` includes Selenium, BeautifulSoup, pandas, and lxm
 
 ## **🚀 How to Run the Script**
 
+_(Make sure `max_workers = ..` is set in the main.py file based on your system spec.If CPU is hitting 100% or RAM is nearly full, reduce max_workers)_
+
 ```bash
 python main.py
 ```

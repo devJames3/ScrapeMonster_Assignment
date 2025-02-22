@@ -29,7 +29,7 @@ def safe_get(driver, url, classname=None, max_retries=3, timeout=10):
             return True  # Page loaded successfully
         except Exception as e:
             print(f"⚠️ Attempt {attempt + 1} failed for {url}")
-            time.sleep(2)  # Wait before retrying
+            time.sleep(3)  # Wait before retrying
     
     print(f"❌ Failed to load after {max_retries} attempts: {url}")
     return False  # Page failed to load
