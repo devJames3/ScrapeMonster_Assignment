@@ -152,5 +152,12 @@ This will:
 
 ---
 
+## **📊 Future improvements**
+
+- Make the code more efficient and faster by adding batching in fetching sub-categories
+- Pandas Dataframe implementations to help with data manipulation and modifications. As well ass data integrity checks.
+
+---
+
 🚀 **Built for Scrapemonster.tech** | Estonia 🇪🇪  
 🔗 **Developed by James Okolie**
