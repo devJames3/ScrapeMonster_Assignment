@@ -10,6 +10,8 @@ The script is optimized for:
 - **Efficiency**: Uses Selenium for JavaScript-rendered content and BeautifulSoup for fast parsing
 - **Maintainability**: Modular functions with proper error handling
 
+**_(Please read the `How to run the script` section properly to avoid system crash of memory issues")_**
+
 ---
 
 ## **📦 Extracted Data Fields**
@@ -50,7 +52,9 @@ _(Make sure `requirements.txt` includes Selenium, BeautifulSoup, pandas, and lxm
 
 ## **🚀 How to Run the Script**
 
-_(Make sure `max_workers = ..` is set in the main.py file based on your system spec.If CPU is hitting 100% or RAM is nearly full, reduce max_workers)_
+**_(Due to the size of the data to scrape, limit(optional) is added to fetch limited number of categories/products, remove limit to fetch all products - `extract_categories(url, max_workers, limit)`, `extract_product_links(categories, max_workers, limit)` called in `main.py`)_**
+
+**_(Make sure `max_workers = ..` is set in the `main.py` file based on your system spec.If CPU is hitting 100% or RAM is nearly full, reduce max_workers)_**
 
 ```bash
 python main.py
@@ -61,7 +65,7 @@ This will:
 1. Navigate to the homepage.
 2. Extract all **categories** and their subcategories.
 3. Scrape **product data** from each subcategory.
-4. Save the output in **JSON format**.
+4. Save the output in **JSON format**. `products.json` file
 
 ---
 
@@ -124,7 +128,7 @@ This will:
         "currency": "THB"
       },
       "label": "OTOP Product"
-    }, ...
+    }, {...}, {...}, ...
   ],
   "Only At Tops": [
     {
@@ -140,8 +144,9 @@ This will:
             "currency": "THB"
         },
         "label": "Best Seller"
-    },...
-  ]
+    }, {...}, {...}, ...
+  ],
+  "Another_category": [{...}, {...}]
 }
 ```
 

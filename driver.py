@@ -20,16 +20,15 @@ def safe_get(driver, url, classname=None, max_retries=3, timeout=10):
     """Attempts to load a URL with retries and explicit waiting."""
     for attempt in range(max_retries):
         try:
-            driver.get(url)  # Load the page
+            driver.get(url) 
             if classname:
                 WebDriverWait(driver, timeout).until(
                     EC.presence_of_element_located((By.CLASS_NAME, classname))
                 )
-            # print(f"✅ Successfully loaded: {url}")
+
             return True  # Page loaded successfully
         except Exception as e:
             print(f"⚠️ Attempt {attempt + 1} failed for {url}")
-            time.sleep(3)  # Wait before retrying
-    
+            time.sleep(3)
     print(f"❌ Failed to load after {max_retries} attempts: {url}")
     return False  # Page failed to load
