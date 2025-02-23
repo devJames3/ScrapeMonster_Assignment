@@ -77,7 +77,7 @@ This will:
 
 ### **🔹 Subcategory Extraction**
 
-- Selenium loads the page.
+- Selenium loads the page. This is because some relevant data on the page loads dynamically with Javascript
 - **BeautifulSoup** parses and extracts subcategory links (`<a class="plp-carousel__link">`).
 - This speeds up data extraction.
 
